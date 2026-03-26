@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-glitch-cyan: #00ffff;
+  --color-glitch-magenta: #ff00ff;
+  --color-glitch-black: #050505;
+  --color-glitch-gray: #1a1a1a;
+  --font-mono: 'VT323', monospace;
+}
+
+@layer utilities {
+  .text-glitch-cyan {
+    color: var(--color-glitch-cyan);
+  }
+  .text-glitch-magenta {
+    color: var(--color-glitch-magenta);
+  }
+  .bg-glitch-cyan {
+    background-color: var(--color-glitch-cyan);
+  }
+  .bg-glitch-magenta {
+    background-color: var(--color-glitch-magenta);
+  }
+  .border-glitch-cyan {
+    border-color: var(--color-glitch-cyan);
+  }
+  .border-glitch-magenta {
+    border-color: var(--color-glitch-magenta);
+  }
+  
+  .glitch-container {
+    position: relative;
+  }
+  
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .scanlines {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0,0,0,0.2) 50%,
+      rgba(0,0,0,0.2)
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+
+  .screen-tear {
+    /* Animation removed for clarity */
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.3s ease-in-out infinite;
+  }
+
+  .rainbow-body {
+    animation: rainbow-bg 1s linear infinite;
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-20deg) scale(1.2); }
+  50% { transform: rotate(20deg) scale(1.2); }
+}
+
+@keyframes rainbow-bg {
+  0% { background-color: #ff00ff; box-shadow: 0 0 10px #ff00ff; }
+  33% { background-color: #00ffff; box-shadow: 0 0 10px #00ffff; }
+  66% { background-color: #ffff00; box-shadow: 0 0 10px #ffff00; }
+  100% { background-color: #ff00ff; box-shadow: 0 0 10px #ff00ff; }
+}
+
+body {
+  background-color: var(--color-glitch-black);
+  color: #e0e0e0;
+  font-family: 'VT323', monospace;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
